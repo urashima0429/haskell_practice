@@ -2,7 +2,7 @@
 doubleMe x = x * 2
 doubleUs x y = x * 2 + y * 2
 doubleSmallerNumber x y =
-	if x < y then x * 2 else y * 2
+  if x < y then x * 2 else y * 2
 
 -- Append
 nn = [1,2,3] ++ [4,5,6]
@@ -51,18 +51,33 @@ li5 = replicate 3 7 -- [7,7,7]
 --list comprehension
 li6 = [x*x | x <- [1..5]] -- [1,4,9,16,25]
 li7 = [x | x <- [50..100], x `mod` 7 == 3]
-	-- [52,59,66,73,80,87,94] 
+  -- [52,59,66,73,80,87,94] 
 goodbad xs = [if x `mod` 7 == 3 then "good" else "bad" | x <- xs, odd x]
 li8 = [x + y | x <- [1,2,3] , y <- [10,20,30]]
-	-- [11,21,31,12,22,32,13,23,33]
+  -- [11,21,31,12,22,32,13,23,33]
 length' xs = sum [1 | _ <- xs]
 xxs = [ [1,2,3],[4,5,6],[7,8,9] ]
 li9 = [ [x | x <- xs, even x] | xs <- xxs]
-	-- [[2],[4,6],[8]] 
+  -- [[2],[4,6],[8]] 
 
 -- tuple
 tp0 = (1,False)
 first = fst tp0 -- 1
 second = snd tp0 -- False
 tp1 = zip [1..] ["one","two","three"]
-	-- [(1,"one"),(2,"two"),(3,"three")] 
+  -- [(1,"one"),(2,"two"),(3,"three")] 
+
+
+-- :t 'a'  -- Char
+-- :t True  -- Bool
+-- :t "Hello" -- [Char]
+
+removeNonUppercase :: [Char] -> [Char]
+removeNonUppercase st = [c | c <- st, c `elem` ['A'..'Z']]
+
+addThree :: Int -> Int -> Int -> Int
+addThree x y z = x + y + z
+
+factorial :: Integer -> Integer
+factorial n = product [1..n]
+ 
